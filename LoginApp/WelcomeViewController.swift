@@ -15,12 +15,8 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        welcomeLabel.text = "Welcome, \(name)!"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         view.setGradientLayer()
-        super.viewWillAppear(animated)
+        welcomeLabel.text = "Welcome, \(name)!"
     }
     
     

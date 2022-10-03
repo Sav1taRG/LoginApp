@@ -12,14 +12,33 @@ class LoginViewController: UIViewController {
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
-    @IBOutlet var loginButton: UIButton!
-    
     private let userName = "Test"
     private let password = "Test"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let welcomeVC = segue.destination as? WelcomeViewController else {
+            return
+        }
+        welcomeVC.name = userNameTF.text ?? ""
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    @IBAction func userNameReminder() {
+        showAlert(
+            title: "User Name reminder.",
+            message: "Your username: \(userName).",
+            textField: userNameTF)
+    }
+    
+    @IBAction func passwordReminder() {
+        showAlert(
+            title: "Password reminder.",
+            message: "Your password: \(password)",
+            textField: passwordTF)
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
@@ -29,17 +48,15 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed() {
         if userNameTF.text != userName || passwordTF.text != password {
-        showLoginAlert(title: "Login Failed.", message: "Please, enter correct login and password.", textField: passwordTF)
+            showAlert(
+                title: "Login Failed.",
+                message: "Please, enter correct login and password.",
+                textField: passwordTF
+            )
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else {
-            return
-        }
-        welcomeVC.name = userNameTF.text ?? ""
-    }
-    private func showLoginAlert (
+
+    private func showAlert (
         title: String,
         message: String,
         textField: UITextField
@@ -54,10 +71,5 @@ class LoginViewController: UIViewController {
             textField.text = ""
         })
         present(alert, animated: true)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super .touchesBegan(touches, with: event)
-        view.endEditing(true)
     }
 }
