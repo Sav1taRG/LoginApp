@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
         passwordTF.text = ""
     }
     
-    @IBAction func logintButtonPressed() {
+    @IBAction func loginButtonPressed() {
         if userNameTF.text != userName || passwordTF.text != password {
         showLoginAlert(title: "Login Failed.", message: "Please, enter correct login and password.", textField: passwordTF)
         }
