@@ -19,7 +19,7 @@ class WelcomeViewController: UIViewController {
         welcomeLabel.text = "Welcome, \(name)!"
     }
     
-    
+    // MARK: Backgroud Gradient color
 }
 extension UIView {
     func setGradientLayer() {

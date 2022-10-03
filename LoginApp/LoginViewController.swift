@@ -9,12 +9,15 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // MARK: IB Outlets
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
+    // MARK: Private properties
     private let userName = "Test"
     private let password = "Test"
     
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else {
             return
@@ -27,6 +30,7 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
     
+    // MARK: IB Actions
     @IBAction func userNameReminder() {
         showAlert(
             title: "User Name reminder.",
@@ -55,7 +59,8 @@ class LoginViewController: UIViewController {
             )
         }
     }
-
+    
+    // MARK: Alert func
     private func showAlert (
         title: String,
         message: String,
