@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
         guard let welcomeVC = segue.destination as? WelcomeViewController else {
             return
         }
-        welcomeVC.name = userNameTF.text ?? ""
+        welcomeVC.name = userName
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,15 +31,14 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: IB Actions
-    @IBAction func userNameReminder() {
-        showAlert(
+    @IBAction func authReminder(_ sender: UIButton) {
+        sender.tag == 0
+        ? showAlert(
             title: "User Name reminder.",
             message: "Your username: \(userName).",
             textField: userNameTF)
-    }
-    
-    @IBAction func passwordReminder() {
-        showAlert(
+        
+        :  showAlert(
             title: "Password reminder.",
             message: "Your password: \(password)",
             textField: passwordTF)
@@ -51,13 +50,15 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed() {
-        if userNameTF.text != userName || passwordTF.text != password {
+        guard userNameTF.text == userName, passwordTF.text == password else {
             showAlert(
                 title: "Login Failed.",
                 message: "Please, enter correct login and password.",
                 textField: passwordTF
             )
+            return
         }
+        performSegue(withIdentifier: "showWelcomeVC", sender: nil)
     }
     
     // MARK: Alert func

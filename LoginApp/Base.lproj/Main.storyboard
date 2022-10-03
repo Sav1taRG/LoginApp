@@ -41,7 +41,6 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Log In"/>
                                         <connections>
                                             <action selector="loginButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="2hH-Uq-T4H"/>
-                                            <segue destination="27z-3C-qTo" kind="presentation" modalPresentationStyle="fullScreen" id="cHy-nX-Rlb"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="s20-qz-rMb">
@@ -55,7 +54,7 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="0.0"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="userNameReminder" destination="BYZ-38-t0r" eventType="touchUpInside" id="pcs-SO-NqL"/>
+                                                    <action selector="authReminder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NMw-AA-DBY"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehy-ef-vb3">
@@ -65,7 +64,7 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="0.0"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="passwordReminder" destination="BYZ-38-t0r" eventType="touchUpInside" id="YZm-ff-IRC"/>
+                                                    <action selector="authReminder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7OQ-Qj-mwN"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -84,6 +83,7 @@
                     <connections>
                         <outlet property="passwordTF" destination="ELe-Rh-Eh1" id="KQ1-8m-aKN"/>
                         <outlet property="userNameTF" destination="bgQ-iE-FiN" id="qDa-Rj-Cxq"/>
+                        <segue destination="27z-3C-qTo" kind="presentation" identifier="showWelcomeVC" modalPresentationStyle="fullScreen" id="rVb-RH-wOm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

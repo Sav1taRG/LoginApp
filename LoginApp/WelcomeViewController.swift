@@ -15,20 +15,17 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.setGradientLayer()
+        view.setGradientLayer(topColor: .systemMint, bottomColor: .systemPink)
         welcomeLabel.text = "Welcome, \(name)!"
     }
-    
-    // MARK: Backgroud Gradient color
 }
+
+// MARK: Backgroud Gradient color
 extension UIView {
-    func setGradientLayer() {
-        
-        let topColor =  UIColor.systemMint.cgColor
-        let bottomColor = UIColor.systemPink.cgColor
+    func setGradientLayer(topColor: UIColor, bottomColor: UIColor) {
         
         let gradient = CAGradientLayer()
-        gradient.colors = [topColor, bottomColor]
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
         gradient.locations = [0.0, 1.0]
         gradient.frame = bounds
         
