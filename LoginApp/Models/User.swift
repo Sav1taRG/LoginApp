@@ -43,7 +43,7 @@ struct Person {
             lastName: "Golubinko",
             age: "32",
             company: "iCenter",
-            division: "Apple Authorized Service Provider",
+            division: "Apple Premium Service Provider",
             position: "Head of department ",
             description:
             """
