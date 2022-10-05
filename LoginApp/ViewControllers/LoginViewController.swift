@@ -14,15 +14,26 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTF: UITextField!
     
     // MARK: Private properties
-    private let userName = "Test"
-    private let password = "Test"
+    private let userObject = User.getUser()
     
-    // MARK: Navigation
+    // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else {
+
+        guard let tabBarController = segue.destination as? UITabBarController else {
             return
         }
-        welcomeVC.name = userName
+        guard let viewControllers = tabBarController.viewControllers else {
+            return
+        }
+        
+        viewControllers.forEach {
+            if let welcomeVC = $0 as? WelcomeViewController {
+                welcomeVC.user = userObject
+            } else if let naviController = $0 as? UINavigationController {
+                let infoVC = naviController.topViewController as! InfoViewController
+                infoVC.user = userObject
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -35,13 +46,14 @@ class LoginViewController: UIViewController {
         sender.tag == 0
         ? showAlert(
             title: "User Name reminder.",
-            message: "Your username: \(userName).",
-            textField: userNameTF)
-        
+            message: "Your username: \(userObject.name).",
+            textField: passwordTF
+        )
         :  showAlert(
             title: "Password reminder.",
-            message: "Your password: \(password)",
-            textField: passwordTF)
+            message: "Your password: \(userObject.password)",
+            textField: passwordTF
+        )
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
@@ -50,7 +62,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed() {
-        guard userNameTF.text == userName, passwordTF.text == password else {
+        guard userNameTF.text == userObject.name,
+              passwordTF.text == userObject.password else {
             showAlert(
                 title: "Login Failed.",
                 message: "Please, enter correct login and password.",
