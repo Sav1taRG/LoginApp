@@ -16,7 +16,13 @@ class LoginViewController: UIViewController {
     // MARK: Private properties
     private let userObject = User.getUser()
     
-    // MARK: Segues
+    // MARK: Life Cycles Methods
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         guard let tabBarController = segue.destination as? UITabBarController else {
@@ -34,11 +40,6 @@ class LoginViewController: UIViewController {
                 infoVC.user = userObject
             }
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super .touchesBegan(touches, with: event)
-        view.endEditing(true)
     }
     
     // MARK: IB Actions
@@ -74,7 +75,7 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: "showWelcomeVC", sender: nil)
     }
     
-    // MARK: Alert func
+    // MARK: Alert Private Method
     private func showAlert (
         title: String,
         message: String,

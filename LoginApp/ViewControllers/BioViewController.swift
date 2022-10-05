@@ -9,12 +9,14 @@ import UIKit
 
 class BioViewController: UIViewController {
     
+    // MARK: IB Outlets
     @IBOutlet var bioImage: UIImageView!
     @IBOutlet var descLB: UILabel!
     
+    // MARK: Public Properties
     var user: User!
     
-    
+    // MARK: Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientLayer(topColor: .systemMint, bottomColor: .systemFill)
@@ -25,10 +27,4 @@ class BioViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         bioImage.layer.cornerRadius = 30
     }
-    
-    
-    
-    
-    
-    
 }

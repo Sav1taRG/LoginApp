@@ -9,18 +9,22 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
+    // MARK: IB Outlests
     @IBOutlet var firstNameLb: UILabel!
     @IBOutlet var lastNameLB: UILabel!
     @IBOutlet var ageLb: UILabel!
     @IBOutlet var companyLB: UILabel!
     @IBOutlet var divisionLB: UILabel!
     @IBOutlet var positionLB: UILabel!
+    
     @IBOutlet var titleLb: UINavigationItem!
    
     @IBOutlet var userImage: UIImageView!
     
+    // MARK: Public Properties
     var user: User!
     
+    // MARK: Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientLayer(topColor: .systemMint, bottomColor: .systemFill)
@@ -37,11 +41,11 @@ class InfoViewController: UIViewController {
         userImage.image = UIImage(named: user.person.photo)
     }
     
-    
     override func viewWillLayoutSubviews() {
         userImage.layer.cornerRadius = 30
     }
     
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let bioVC = segue.destination as? BioViewController else {
             return
