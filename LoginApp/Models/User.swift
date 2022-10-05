@@ -31,8 +31,13 @@ struct Person {
     let position: String
     let description: String
     let photo: String
+    let photoBio: String
     
-   static func getPerson() -> Person {
+    var fullName: String {
+        "\(firstName) \(lastName)"
+    }
+    
+    static func getPerson() -> Person {
         Person(
             firstName: "Roman",
             lastName: "Golubinko",
@@ -40,7 +45,14 @@ struct Person {
             company: "iCenter",
             division: "Apple Authorized Service Provider",
             position: "Head of department ",
-            description: "",
-            photo: "UserPhoto")
+            description:
+            """
+            Greetings from Kaliningrad!
+            I love travelling, videogames and coding.
+            Work hard. Dream big!
+            """,
+            photo: "userPhoto",
+            photoBio: "bioPhoto"
+        )
     }
 }
