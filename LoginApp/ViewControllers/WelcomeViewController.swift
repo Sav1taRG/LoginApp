@@ -13,6 +13,7 @@ class WelcomeViewController: UIViewController {
     
     var user: User!
     
+    // MARK: Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientLayer(topColor: .systemMint, bottomColor: .systemFill)
